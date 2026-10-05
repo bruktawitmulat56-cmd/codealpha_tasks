@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Phishing Awareness Training</title>
+<style>
+:root{
+  --bg:#0f1420; --card:#161d2e; --text:#eef1f8; --sub:#9aa5bd;
+  --accent:#4f7cff; --danger:#ff5d5d; --good:#39d98a; --border:#262f45;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f4f6fb; --card:#ffffff; --text:#1a2233; --sub:#5b6478;
+    --accent:#3457d5; --danger:#d23f3f; --good:#1f9d63; --border:#e1e6f0;
+  }
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  display:flex; flex-direction:column; align-items:center;
+  padding:20px; gap:16px;
+}
+.deck{width:100%; max-width:760px; display:flex; flex-direction:column; gap:14px;}
+.slide{
+  background:var(--card); border:1px solid var(--border); border-radius:16px;
+  padding:34px 30px; min-height:380px; display:none; flex-direction:column; justify-content:center;
+}
+.slide.active{display:flex}
+.kicker{color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px;}
+h1{font-size:28px; margin:0 0 10px;}
+h2{font-size:22px; margin:0 0 14px;}
+p{color:var(--sub); line-height:1.55; margin:0 0 10px; font-size:16px;}
+ul{margin:0; padding-left:20px; color:var(--text);}
+li{margin-bottom:8px; line-height:1.5;}
+.tag{display:inline-block; font-size:12px; font-weight:700; padding:3px 10px; border-radius:20px; margin-right:6px;}
+.tag.danger{background:rgba(255,93,93,.15); color:var(--danger);}
+.tag.good{background:rgba(57,217,138,.15); color:var(--good);}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+@media(max-width:560px){.grid2{grid-template-columns:1fr;}}
+.stat{background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:14px; text-align:center;}
+.stat b{display:block; font-size:26px; color:var(--accent);}
+.stat span{font-size:12px; color:var(--sub);}
+code{background:var(--bg); border:1px solid var(--border); padding:2px 6px; border-radius:6px; font-size:13px;}
+.nav{display:flex; align-items:center; justify-content:space-between; width:100%; max-width:760px;}
+button{
+  background:var(--accent); color:#fff; border:none; border-radius:10px;
+  padding:10px 18px; font-size:14px; font-weight:600; cursor:pointer;
+}
+button:disabled{opacity:.35; cursor:default;}
+.dots{display:flex; gap:6px;}
+.dot{width:7px; height:7px; border-radius:50%; background:var(--border);}
+.dot.on{background:var(--accent);}
+.quiz-opt{
+  display:block; width:100%; text-align:left; background:var(--bg); color:var(--text);
+  border:1px solid var(--border); border-radius:10px; padding:10px 14px; margin-bottom:8px; font-size:15px;
+}
+.quiz-opt.correct{border-color:var(--good); background:rgba(57,217,138,.1);}
+.quiz-opt.wrong{border-color:var(--danger); background:rgba(255,93,93,.1);}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<div class="slide active">
+  <div class="kicker">CodeAlpha Cyber Security Internship</div>
+  <h1>Phishing Awareness Training</h1>
+  <p>Recognize it. Resist it. Report it.</p>
+  <p style="margin-top:20px;font-size:14px;">Prepared by Biruktawit Mulat</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">01 — What is phishing?</div>
+  <h2>Tricking people, not systems</h2>
+  <p>Phishing is a fake email, message, or website designed to trick someone into handing over credentials, money, or sensitive data.</p>
+  <p>It targets <b>human psychology</b> — not a software bug. That's what makes it so hard to patch away.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">02 — Why it works</div>
+  <h2>Three psychological triggers</h2>
+  <ul>
+    <li><b>Urgency</b> — "act now or lose access"</li>
+    <li><b>Authority</b> — appears to come from IT, HR, or a trusted office</li>
+    <li><b>Familiarity</b> — mimics emails you already expect</li>
+  </ul>
+  <p>Attackers don't need to hack your system if they can convince you to open the door yourself.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">03 — Email red flags</div>
+  <h2>How to spot a fake email</h2>
+  <ul>
+    <li>Urgent or threatening tone</li>
+    <li>Sender address slightly off (e.g. <code>support@paypa1.com</code>)</li>
+    <li>Generic greeting ("Dear user")</li>
+    <li>Unexpected attachment or link</li>
+    <li>Asks you to "verify" or "confirm" credentials</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <div class="kicker">04 — Website red flags</div>
+  <h2>How to spot a fake page</h2>
+  <ul>
+    <li>Misspelled or unusual domain name</li>
+    <li>No HTTPS padlock, or a warning in the browser</li>
+    <li>Login page looks almost right, but slightly off</li>
+    <li>Redirects you somewhere strange after submitting</li>
+  </ul>
+  <p>Rule: always check the <b>URL</b> before typing a password — not just the page design.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">05 — Case study</div>
+  <h2>I ran a real simulation</h2>
+  <p>Using the GoPhish framework, I built a fake "Registrar's Office" login page and sent a personalized phishing email to test recipients — as a controlled, consented exercise.</p>
+  <span class="tag danger">Fake sender: Registrar's Office</span>
+  <span class="tag danger">Fake urgency: registration deadline</span>
+</div>
+
+<div class="slide">
+  <div class="kicker">06 — What happened</div>
+  <h2>The results</h2>
+  <div class="grid2">
+    <div class="stat"><b>50%</b><span>opened the email</span></div>
+    <div class="stat"><b>100%</b><span>of openers clicked the link</span></div>
+    <div class="stat"><b>100%</b><span>of clickers submitted credentials</span></div>
+    <div class="stat"><b>30s</b><span>click → credential submit</span></div>
+  </div>
+  <p style="margin-top:12px;">Once someone clicked, nobody paused to check the page — they just logged in.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">07 — Defense</div>
+  <h2>How to protect yourself</h2>
+  <ul>
+    <li>Hover over links before clicking — check where they really go</li>
+    <li>Verify the sender's actual email address</li>
+    <li>Turn on Multi-Factor Authentication (MFA)</li>
+    <li>When unsure, go to the site directly — don't click the email link</li>
+    <li>Report suspicious emails instead of ignoring them</li>
+  </ul>
+</div>
+
+<div class="slide" id="quizSlide">
+  <div class="kicker">08 — Quick check</div>
+  <h2>Real or fake?</h2>
+  <p><code>support@paypa1-secure.com</code> emails you saying your account will be suspended in 2 hours unless you "verify" by clicking a link.</p>
+  <div id="quizOpts">
+    <button class="quiz-opt" data-correct="false">This is a real, safe email</button>
+    <button class="quiz-opt" data-correct="true">This is a phishing attempt</button>
+  </div>
+  <p id="quizFeedback" style="margin-top:10px; font-size:14px;"></p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Thanks</div>
+  <h2>Stay alert, stay safe</h2>
+  <p>When in doubt — don't click. Verify through a separate, trusted channel.</p>
+  <p style="margin-top:20px;font-size:14px;">CodeAlpha Cyber Security Internship — Biruktawit Mulat</p>
+</div>
+
+</div>
+
+<div class="nav">
+  <button id="prevBtn">&larr; Prev</button>
+  <div class="dots" id="dots"></div>
+  <button id="nextBtn">Next &rarr;</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsWrap = document.getElementById('dots');
+let i = 0;
+slides.forEach((_,idx)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(idx===0?' on':'');
+  dotsWrap.appendChild(d);
+});
+const dots = document.querySelectorAll('.dot');
+function show(n){
+  slides[i].classList.remove('active');
+  dots[i].classList.remove('on');
+  i = Math.max(0, Math.min(slides.length-1, n));
+  slides[i].classList.add('active');
+  dots[i].classList.add('on');
+  document.getElementById('prevBtn').disabled = i===0;
+  document.getElementById('nextBtn').disabled = i===slides.length-1;
+}
+document.getElementById('prevBtn').onclick=()=>show(i-1);
+document.getElementById('nextBtn').onclick=()=>show(i+1);
+show(0);
+
+document.querySelectorAll('.quiz-opt').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const correct = btn.dataset.correct === 'true';
+    document.querySelectorAll('.quiz-opt').forEach(b=>{
+      b.disabled = true;
+      if(b.dataset.correct==='true') b.classList.add('correct');
+    });
+    if(!correct) btn.classList.add('wrong');
+    document.getElementById('quizFeedback').textContent = correct
+      ? "Correct — misspelled domain + fear + urgency = classic phishing."
+      : "Not quite — look at the domain: paypa1-secure.com isn't PayPal.";
+  });
+});
+</script>
+</body>
+</html>
